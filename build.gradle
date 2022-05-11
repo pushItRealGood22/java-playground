@@ -18,6 +18,11 @@ test {
     useJUnitPlatform()
 }
 
+wrapper {
+    gradleVersion = '6.5.1'
+    distributionType = Wrapper.DistributionType.BIN
+}
+
 jar {
     manifest {
         attributes(
