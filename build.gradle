@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.galvanize'
+group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -18,15 +18,16 @@ test {
     useJUnitPlatform()
 }
 
-wrapper {
-    gradleVersion = '6.5.1'
-    distributionType = Wrapper.DistributionType.BIN
+configurations {
+    implementation {
+        canBeResolved = true
+    }
 }
-
 jar {
     manifest {
+
         attributes(
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Class-Path': configurations.implementation.collect { it.getName() }.join(' '),
                 'Main-Class': 'com.galvanize.Application'
         )
     }
